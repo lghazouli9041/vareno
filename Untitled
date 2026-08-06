@@ -1,0 +1,26 @@
+# ── App ──────────────────────────────────────────────
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_WHATSAPP_NUMBER=18005550148
+
+# ── Database (PostgreSQL) ────────────────────────────
+DATABASE_URL=postgresql://neondb_owner:npg_dbR3gaBF8rQN@ep-rough-wildflower-axlmg6r2.c-4.us-east-2.aws.neon.tech/neondb?sslmode=require
+
+# ── Clerk ────────────────────────────────────────────
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_aW5zcGlyZWQtYm9uZWZpc2gtMjEuY2xlcmsuYWNjb3VudHMuZGV2JA
+CLERK_SECRET_KEY=sk_test_MWH8v2YBLhermpG7zdCOD6SgoMSAcz1ucO9o8hnEmw
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/account
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/account
+
+# ── Stripe ───────────────────────────────────────────
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# ── Cloudinary ───────────────────────────────────────
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_CLOUD_NAME=
+CLOUDINARY_API_KEY=
+CLOUDINARY_API_SECRET=

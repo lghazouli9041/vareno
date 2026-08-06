@@ -1,0 +1,324 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   VARENO DESIGN SYSTEM — Luxury visual foundation
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  --color-primary: var(--hajamed-primary);
+  --color-secondary: var(--hajamed-secondary);
+  --color-accent: var(--hajamed-accent);
+  --color-accent-hover: var(--hajamed-accent-hover);
+  --color-border: var(--hajamed-border);
+  --color-text: var(--hajamed-text);
+  --color-muted: var(--hajamed-muted);
+  --color-background: var(--hajamed-background);
+  --color-surface: var(--hajamed-surface);
+  --color-surface-elevated: var(--hajamed-surface-elevated);
+  --color-inverse: var(--hajamed-inverse);
+  --color-inverse-text: var(--hajamed-inverse-text);
+  --color-success: var(--hajamed-success);
+  --color-error: var(--hajamed-error);
+  --color-warning: var(--hajamed-warning);
+
+  --color-black: var(--hajamed-primary);
+  --color-gold: var(--hajamed-accent);
+  --color-gold-light: var(--hajamed-accent-hover);
+  --color-gold-dark: #b08d3a;
+  --color-cream: var(--hajamed-secondary);
+  --color-cream-dark: var(--hajamed-border);
+  --color-charcoal: #1a1a1a;
+
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-full: 9999px;
+
+  --shadow-xs: 0 1px 2px rgb(17 17 17 / 0.035);
+  --shadow-sm: 0 4px 14px rgb(17 17 17 / 0.05);
+  --shadow-md: 0 12px 36px rgb(17 17 17 / 0.07);
+  --shadow-lg: 0 22px 56px rgb(17 17 17 / 0.1);
+  --shadow-xl: 0 32px 80px rgb(17 17 17 / 0.12);
+  --shadow-gold: 0 12px 40px rgb(201 161 74 / 0.22);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  --ease-luxury: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 560ms;
+  --duration-slower: 900ms;
+}
+
+:root {
+  --hajamed-primary: #111111;
+  --hajamed-secondary: #fafafa;
+  --hajamed-accent: #c9a14a;
+  --hajamed-accent-hover: #d4b05e;
+  --hajamed-border: #e8e8e8;
+  --hajamed-text: #2b2b2b;
+  --hajamed-muted: #777777;
+  --hajamed-background: #ffffff;
+  --hajamed-surface: #f7f7f7;
+  --hajamed-surface-elevated: #ffffff;
+  --hajamed-inverse: #111111;
+  --hajamed-inverse-text: #fafafa;
+  --hajamed-success: #2f6b4f;
+  --hajamed-error: #8b3a3a;
+  --hajamed-warning: #9a7b2f;
+
+  /* Legacy alias — keep existing references working */
+  --aurevia-primary: var(--hajamed-primary);
+  --aurevia-secondary: var(--hajamed-secondary);
+  --aurevia-accent: var(--hajamed-accent);
+  --aurevia-accent-hover: var(--hajamed-accent-hover);
+  --aurevia-border: var(--hajamed-border);
+  --aurevia-text: var(--hajamed-text);
+  --aurevia-muted: var(--hajamed-muted);
+  --aurevia-background: var(--hajamed-background);
+  --aurevia-surface: var(--hajamed-surface);
+  --aurevia-surface-elevated: var(--hajamed-surface-elevated);
+  --aurevia-inverse: var(--hajamed-inverse);
+  --aurevia-inverse-text: var(--hajamed-inverse-text);
+  --aurevia-success: var(--hajamed-success);
+  --aurevia-error: var(--hajamed-error);
+  --aurevia-warning: var(--hajamed-warning);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --container-max: 80rem;
+  --container-narrow: 42rem;
+  --header-height: 5rem;
+  --section-y: clamp(5rem, 10vw, 8.75rem);
+  --heading-tracking: -0.015em;
+  --eyebrow-tracking: 0.3em;
+}
+
+.dark {
+  --hajamed-primary: #fafafa;
+  --hajamed-secondary: #161616;
+  --hajamed-accent: #c9a14a;
+  --hajamed-accent-hover: #d4b05e;
+  --hajamed-border: #2a2a2a;
+  --hajamed-text: #e8e8e8;
+  --hajamed-muted: #9a9a9a;
+  --hajamed-background: #0d0d0d;
+  --hajamed-surface: #161616;
+  --hajamed-surface-elevated: #1c1c1c;
+  --hajamed-inverse: #fafafa;
+  --hajamed-inverse-text: #111111;
+  --hajamed-success: #4a9a72;
+  --hajamed-error: #c46a6a;
+  --hajamed-warning: #c9a14a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--hajamed-background);
+  color: var(--hajamed-text);
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--hajamed-accent);
+  color: #111111;
+}
+
+:focus-visible {
+  outline: 2px solid var(--hajamed-accent);
+  outline-offset: 3px;
+}
+
+.font-display {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  letter-spacing: var(--heading-tracking);
+}
+
+.font-body {
+  font-family: var(--font-body), ui-sans-serif, sans-serif;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+.gold-line {
+  width: 3.25rem;
+  height: 1px;
+  background-color: var(--hajamed-accent);
+}
+
+.gold-line-center {
+  width: 3.25rem;
+  height: 1px;
+  margin-inline: auto;
+  background-color: var(--hajamed-accent);
+}
+
+.glass {
+  background: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(18px) saturate(1.25);
+  -webkit-backdrop-filter: blur(18px) saturate(1.25);
+  border: 1px solid rgb(232 232 232 / 0.75);
+  box-shadow: var(--shadow-sm);
+}
+
+.luxury-card {
+  border: 1px solid rgb(232 232 232 / 0.9);
+  background: rgb(255 255 255 / 0.86);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  transition:
+    transform var(--duration-slow) var(--ease-luxury),
+    box-shadow var(--duration-slow) var(--ease-luxury),
+    border-color var(--duration-slow) var(--ease-luxury);
+}
+
+.luxury-card:hover {
+  border-color: rgb(201 161 74 / 0.35);
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgb(201 161 74 / 0.06);
+  transform: translateY(-0.35rem);
+}
+
+.luxury-media {
+  overflow: hidden;
+  background: var(--hajamed-surface);
+}
+
+.luxury-media img {
+  transition: transform var(--duration-slower) var(--ease-luxury);
+}
+
+.group:hover .luxury-media img,
+.group:focus-visible .luxury-media img {
+  transform: scale(1.05);
+}
+
+/* Soft showroom lift for existing home/shop cards */
+main article.rounded-2xl,
+main a.rounded-2xl {
+  transition:
+    transform var(--duration-slow) var(--ease-luxury),
+    box-shadow var(--duration-slow) var(--ease-luxury),
+    border-color var(--duration-slow) var(--ease-luxury);
+}
+
+main h1.font-display,
+main h2.font-display,
+main h3.font-display {
+  letter-spacing: var(--heading-tracking);
+  text-wrap: balance;
+}
+
+main p.text-muted {
+  line-height: 1.75;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration-slower) var(--ease-luxury) forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up var(--duration-slower) var(--ease-luxury) forwards;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
