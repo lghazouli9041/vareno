@@ -41,12 +41,12 @@
   --radius-2xl: 1.25rem;
   --radius-full: 9999px;
 
-  --shadow-xs: 0 1px 2px rgb(17 17 17 / 0.035);
-  --shadow-sm: 0 4px 14px rgb(17 17 17 / 0.05);
-  --shadow-md: 0 12px 36px rgb(17 17 17 / 0.07);
-  --shadow-lg: 0 22px 56px rgb(17 17 17 / 0.1);
-  --shadow-xl: 0 32px 80px rgb(17 17 17 / 0.12);
-  --shadow-gold: 0 12px 40px rgb(201 161 74 / 0.22);
+  --shadow-xs: 0 1px 2px rgb(17 17 17 / 0.03);
+  --shadow-sm: 0 6px 20px rgb(17 17 17 / 0.045);
+  --shadow-md: 0 14px 40px rgb(17 17 17 / 0.06);
+  --shadow-lg: 0 24px 64px rgb(17 17 17 / 0.08);
+  --shadow-xl: 0 36px 90px rgb(17 17 17 / 0.1);
+  --shadow-gold: 0 12px 40px rgb(182 141 64 / 0.2);
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -62,18 +62,19 @@
 }
 
 :root {
+  /* Black · Warm ivory · Brass gold */
   --hajamed-primary: #111111;
-  --hajamed-secondary: #fafafa;
-  --hajamed-accent: #c9a14a;
-  --hajamed-accent-hover: #d4b05e;
-  --hajamed-border: #e8e8e8;
-  --hajamed-text: #2b2b2b;
-  --hajamed-muted: #777777;
-  --hajamed-background: #ffffff;
-  --hajamed-surface: #f7f7f7;
+  --hajamed-secondary: #f8f6f2;
+  --hajamed-accent: #b68d40;
+  --hajamed-accent-hover: #c9a054;
+  --hajamed-border: #e8e4dc;
+  --hajamed-text: #1a1814;
+  --hajamed-muted: #7a7468;
+  --hajamed-background: #f8f6f2;
+  --hajamed-surface: #f0ebe3;
   --hajamed-surface-elevated: #ffffff;
   --hajamed-inverse: #111111;
-  --hajamed-inverse-text: #fafafa;
+  --hajamed-inverse-text: #f8f6f2;
   --hajamed-success: #2f6b4f;
   --hajamed-error: #8b3a3a;
   --hajamed-warning: #9a7b2f;
@@ -111,8 +112,8 @@
 
   --container-max: 80rem;
   --container-narrow: 42rem;
-  --header-height: 5rem;
-  --section-y: clamp(5rem, 10vw, 8.75rem);
+  --header-height: 5.25rem;
+  --section-y: clamp(5.5rem, 12vw, 9.5rem);
   --heading-tracking: -0.015em;
   --eyebrow-tracking: 0.3em;
 }
@@ -224,18 +225,18 @@ body {
 }
 
 .glass {
-  background: rgb(255 255 255 / 0.72);
-  backdrop-filter: blur(18px) saturate(1.25);
-  -webkit-backdrop-filter: blur(18px) saturate(1.25);
-  border: 1px solid rgb(232 232 232 / 0.75);
+  background: rgb(248 246 242 / 0.78);
+  backdrop-filter: blur(20px) saturate(1.15);
+  -webkit-backdrop-filter: blur(20px) saturate(1.15);
+  border: 1px solid rgb(232 228 220 / 0.7);
   box-shadow: var(--shadow-sm);
 }
 
 .luxury-card {
-  border: 1px solid rgb(232 232 232 / 0.9);
-  background: rgb(255 255 255 / 0.86);
+  border: 1px solid rgb(232 228 220 / 0.95);
+  background: rgb(255 255 255 / 0.92);
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(14px) saturate(1.15);
+  backdrop-filter: blur(12px) saturate(1.1);
   -webkit-backdrop-filter: blur(14px) saturate(1.15);
   transition:
     transform var(--duration-slow) var(--ease-luxury),

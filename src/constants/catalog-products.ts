@@ -1,48 +1,82 @@
 import type { CatalogFinishOption, CatalogProduct } from "@/types/catalog";
+import { FINISH_MOOD_IMAGES } from "@/lib/catalog/finish-gallery";
 
 const FINISH = {
-  brushedGold: {
-    name: "Brushed Gold",
-    slug: "brushed-gold",
-    hex: "#C9A14A",
+  polishedBrass: {
+    name: "Polished Brass",
+    slug: "polished-brass",
+    hex: "#C5A45A",
+  },
+  antiqueBrass: {
+    name: "Antique Brass",
+    slug: "antique-brass",
+    hex: "#9A7B3C",
+  },
+  agedBrass: {
+    name: "Aged Brass",
+    slug: "aged-brass",
+    hex: "#7A6236",
   },
   matteBlack: {
     name: "Matte Black",
     slug: "matte-black",
     hex: "#1A1A1A",
   },
-  polishedChrome: {
-    name: "Polished Chrome",
-    slug: "polished-chrome",
+  chrome: {
+    name: "Chrome",
+    slug: "chrome",
     hex: "#D4D4D4",
   },
-  brushedNickel: {
-    name: "Brushed Nickel",
-    slug: "brushed-nickel",
-    hex: "#A8A29A",
-  },
-  gunmetal: {
-    name: "Gunmetal",
-    slug: "gunmetal",
-    hex: "#4A4E55",
+  // Legacy aliases — existing product calls still resolve
+  brushedGold: {
+    name: "Polished Brass",
+    slug: "polished-brass",
+    hex: "#C5A45A",
   },
   satinBrass: {
-    name: "Satin Brass",
-    slug: "satin-brass",
-    hex: "#B8A05A",
+    name: "Antique Brass",
+    slug: "antique-brass",
+    hex: "#9A7B3C",
+  },
+  brushedNickel: {
+    name: "Aged Brass",
+    slug: "aged-brass",
+    hex: "#7A6236",
+  },
+  polishedChrome: {
+    name: "Chrome",
+    slug: "chrome",
+    hex: "#D4D4D4",
+  },
+  gunmetal: {
+    name: "Matte Black",
+    slug: "matte-black",
+    hex: "#1A1A1A",
   },
 } as const;
 
+const STANDARD_FINISHES: Array<{
+  key: keyof typeof FINISH;
+  delta?: number;
+}> = [
+  { key: "polishedBrass" },
+  { key: "antiqueBrass", delta: 40 },
+  { key: "agedBrass", delta: 60 },
+  { key: "matteBlack", delta: 30 },
+  { key: "chrome", delta: -50 },
+];
+
+/** Always exposes the five VARENO atelier finishes with finish photography. */
 function finishes(
   productKey: string,
   basePrice: number,
-  options: Array<{
+  _legacyOptions?: Array<{
     key: keyof typeof FINISH;
     delta?: number;
     available?: boolean;
   }>,
 ): CatalogFinishOption[] {
-  return options.map(({ key, delta = 0, available = true }) => {
+  return STANDARD_FINISHES.map(({ key, delta = 0 }) => {
     const finish = FINISH[key];
     const skuSuffix = finish.slug
       .split("-")
@@ -53,9 +87,10 @@ function finishes(
       name: finish.name,
       slug: finish.slug,
       hex: finish.hex,
-      sku: `HAJ-${productKey.toUpperCase()}-${skuSuffix}`,
+      sku: `VAR-${productKey.toUpperCase()}-${skuSuffix}`,
       price: basePrice + delta,
-      available,
+      available: true,
+      images: FINISH_MOOD_IMAGES[finish.slug] ?? [],
     };
   });
 }

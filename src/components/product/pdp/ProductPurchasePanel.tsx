@@ -71,15 +71,15 @@ export function ProductPurchasePanel({
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-9">
       <header>
         <p className="text-[10px] uppercase tracking-[0.28em] text-accent">
           {collectionName}
         </p>
-        <h1 className="mt-3 font-display text-3xl leading-[1.1] text-primary md:text-4xl lg:text-[2.75rem]">
+        <h1 className="mt-4 font-display text-3xl leading-[1.08] text-primary md:text-4xl lg:text-[2.85rem]">
           {product.name}
         </h1>
-        <p className="mt-4 text-sm leading-relaxed text-muted">
+        <p className="mt-5 text-sm leading-[1.85] text-muted">
           {product.shortDescription}
         </p>
       </header>
@@ -113,6 +113,9 @@ export function ProductPurchasePanel({
             — {selectedFinish.name}
           </span>
         </legend>
+        <p className="mb-3 text-xs leading-relaxed text-muted">
+          Selecting a finish updates the gallery to matching atelier photography.
+        </p>
         <ul className="flex flex-wrap gap-2.5" role="list">
           {product.finishOptions.map((finish) => {
             const selected = finish.id === selectedFinish.id;

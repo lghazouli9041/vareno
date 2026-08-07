@@ -5,44 +5,44 @@
 
 export const colors = {
   primary: "#111111",
-  secondary: "#FAFAFA",
-  accent: "#C9A14A",
-  accentHover: "#D4B05E",
-  border: "#E8E8E8",
-  text: "#2B2B2B",
-  muted: "#777777",
-  background: "#FFFFFF",
+  secondary: "#F8F6F2",
+  accent: "#B68D40",
+  accentHover: "#C9A054",
+  border: "#E8E4DC",
+  text: "#1A1814",
+  muted: "#7A7468",
+  background: "#F8F6F2",
 } as const;
 
 export const motion = {
   easeLuxury: [0.22, 1, 0.36, 1] as const,
   duration: {
-    fast: 0.15,
-    base: 0.3,
-    slow: 0.5,
-    slower: 0.8,
+    fast: 0.2,
+    base: 0.45,
+    slow: 0.8,
+    slower: 1.2,
   },
   fadeUp: {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 28 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 1, ease: [0.22, 1, 0.36, 1] },
   },
   fade: {
     initial: { opacity: 0 },
     animate: { opacity: 1 },
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
   },
   scaleIn: {
-    initial: { opacity: 0, scale: 0.98 },
+    initial: { opacity: 0, scale: 0.985 },
     animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
   },
 } as const;
 
 export const layout = {
   containerMax: 1280,
-  headerHeight: 80,
-  sectionY: { mobile: 64, desktop: 120 },
+  headerHeight: 84,
+  sectionY: { mobile: 80, desktop: 140 },
 } as const;
 
 export const zIndex = {

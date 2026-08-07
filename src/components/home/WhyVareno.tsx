@@ -1,34 +1,34 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Award, Gem, PenTool, Settings2 } from "lucide-react";
+import { Globe2, Hammer, Shield, Sparkles } from "lucide-react";
 import { Section } from "@/components/layout/Section";
 import { motion as motionTokens } from "@/constants/design";
 
 const pillars = [
   {
-    title: "Solid Brass Construction",
+    title: "Solid Brass",
     description:
-      "Made from premium solid brass for unmatched durability and corrosion resistance.",
-    icon: Gem,
+      "Dense, enduring metal chosen for warmth, weight, and lifetime integrity—never hollow plating.",
+    icon: Sparkles,
   },
   {
-    title: "Lifetime Warranty",
+    title: "Hand Finished",
     description:
-      "Designed to last generations and backed by our lifetime limited warranty.",
-    icon: Award,
+      "Polished, brushed, and perfected by hand so every silhouette carries atelier precision.",
+    icon: Hammer,
   },
   {
-    title: "Architectural Design",
+    title: "Lifetime Durability",
     description:
-      "Minimal timeless silhouettes created for luxury interiors.",
-    icon: PenTool,
+      "Engineered to perform for decades and age with character in extraordinary interiors.",
+    icon: Shield,
   },
   {
-    title: "Precision Engineering",
+    title: "Worldwide Shipping",
     description:
-      "Advanced ceramic cartridges deliver smooth performance for decades.",
-    icon: Settings2,
+      "From our workshop to homes across the globe, delivered with collector-level care.",
+    icon: Globe2,
   },
 ] as const;
 
@@ -48,26 +48,20 @@ export function WhyVareno() {
         initial={reduceMotion ? false : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: reduceMotion ? 0 : 0.7, ease }}
+        transition={{ duration: reduceMotion ? 0 : 0.9, ease }}
       >
-        <p className="mb-4 text-[11px] uppercase tracking-[0.28em] text-accent">
-          Why VARENO
+        <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-accent">
+          The Standard
         </p>
         <h2
           id="why-vareno-heading"
           className="font-display text-3xl text-primary md:text-5xl"
         >
-          Engineered for a Lifetime of Exceptional Living
+          Why VARENO
         </h2>
-        <div className="gold-line-center mt-7" aria-hidden="true" />
-        <p className="mx-auto mt-7 max-w-xl text-pretty text-sm leading-relaxed text-muted md:text-base md:leading-relaxed">
-          Every VARENO fixture is crafted from premium solid brass and engineered
-          with architectural precision to deliver timeless beauty, flawless
-          performance, and lasting reliability.
-        </p>
       </motion.header>
 
-      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-7 lg:gap-8">
+      <ul className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
         {pillars.map((pillar, index) => {
           const Icon = pillar.icon;
           return (
@@ -77,22 +71,22 @@ export function WhyVareno() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{
-                duration: reduceMotion ? 0 : 0.65,
-                delay: reduceMotion ? 0 : index * 0.1,
+                duration: reduceMotion ? 0 : 0.75,
+                delay: reduceMotion ? 0 : index * 0.08,
                 ease,
               }}
             >
-              <article className="group h-full rounded-2xl border border-border/80 bg-background p-8 shadow-sm transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-lg md:p-10">
+              <article className="group h-full border border-border bg-background px-6 py-9 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-md md:px-7 md:py-10">
                 <span
-                  className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-primary shadow-[0_8px_24px_rgb(201_161_74_/_0.28)] transition-transform duration-500 group-hover:scale-105"
+                  className="mb-7 flex h-11 w-11 items-center justify-center border border-accent/45 text-accent transition-all duration-500 group-hover:border-accent group-hover:bg-accent group-hover:text-primary"
                   aria-hidden="true"
                 >
-                  <Icon size={22} strokeWidth={1.5} />
+                  <Icon size={18} strokeWidth={1.35} />
                 </span>
-                <h3 className="font-display text-2xl text-primary md:text-[1.65rem]">
+                <h3 className="font-display text-xl text-primary md:text-2xl">
                   {pillar.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted md:text-[0.95rem] md:leading-relaxed">
+                <p className="mt-3 text-sm leading-relaxed text-muted">
                   {pillar.description}
                 </p>
               </article>

@@ -7,22 +7,26 @@ import {
 } from "@/lib/catalog/repository";
 
 export const metadata: Metadata = {
-  title: "Shop Luxury Kitchen & Bathroom Faucets",
+  title: "Shop Handcrafted Brass Faucets & Accessories",
   description:
-    "Browse VARENO architectural faucets for kitchen and bath. Filter by collection, finish, and availability—crafted for designers and refined American homes.",
+    "Browse VARENO handmade solid brass faucets and bathroom accessories. Filter by kitchen, bath, finish, and collection.",
   alternates: {
     canonical: "/shop",
   },
   openGraph: {
     title: `Shop | ${siteConfig.name}`,
     description:
-      "Explore premium kitchen and bathroom faucets from VARENO. Heritage, Signature, Imperial, Atelier, and Element collections.",
+      "Explore luxury handmade brass faucets and bathroom accessories from VARENO.",
     url: `${siteConfig.url}/shop`,
   },
 };
 
 interface ShopPageProps {
-  searchParams: Promise<{ collection?: string }>;
+  searchParams: Promise<{
+    collection?: string;
+    category?: string;
+    q?: string;
+  }>;
 }
 
 export default async function ShopPage({ searchParams }: ShopPageProps) {
@@ -39,11 +43,21 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
       ? initialCollection
       : undefined;
 
+  const categoryParam = params.category?.trim().toLowerCase();
+  const validCategory =
+    categoryParam === "kitchen" || categoryParam === "bathroom"
+      ? categoryParam
+      : undefined;
+
+  const initialQuery = params.q?.trim() || undefined;
+
   return (
     <ShopView
       initialProducts={products}
       collections={collections}
       initialCollection={validCollection}
+      initialCategory={validCategory}
+      initialQuery={initialQuery}
     />
   );
 }

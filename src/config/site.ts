@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "VARENO",
   legalName: "Vareno LLC",
-  tagline: "Crafted for Timeless Living",
+  tagline: "Timeless Brass for Extraordinary Homes",
   description:
-    "VARENO creates architectural faucets engineered for designers, architects and refined American homes. Premium kitchen and bathroom fixtures crafted with enduring materials and timeless form for the United States market.",
+    "VARENO creates luxury handcrafted brass faucets and bathroom accessories from solid brass—European atelier craftsmanship for kitchens, baths, and timeless interiors worldwide.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hajamed.com",
   locale: "en_US",
   language: "English",
@@ -31,7 +31,7 @@ export const siteConfig = {
   },
   seo: {
     titleTemplate: "%s | VARENO",
-    defaultTitle: "VARENO — Luxury Kitchen & Bathroom Faucets",
+    defaultTitle: "VARENO — Timeless Brass for Extraordinary Homes",
     twitterHandle: "@hajamed",
   },
 } as const;

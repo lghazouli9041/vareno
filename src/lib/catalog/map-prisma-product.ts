@@ -6,6 +6,7 @@ import type {
   Variant,
 } from "@prisma/client";
 import type { CatalogAvailability, CatalogProduct } from "@/types/catalog";
+import { FINISH_HEX, FINISH_MOOD_IMAGES } from "@/lib/catalog/finish-gallery";
 
 export type PrismaProductBundle = Product & {
   category: Category;
@@ -47,10 +48,11 @@ export function mapPrismaProductToCatalog(
     id: variant.id,
     name: variant.finishName,
     slug: variant.finishSlug,
-    hex: "#C9A14A",
+    hex: FINISH_HEX[variant.finishSlug] ?? "#B68D40",
     sku: variant.sku,
     price: Number(variant.price),
     available: variant.inStock && variant.inventory > 0,
+    images: FINISH_MOOD_IMAGES[variant.finishSlug] ?? [],
   }));
 
   const availability: CatalogAvailability =

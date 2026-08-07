@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { luxuryFinishes } from "@/constants/luxury-finishes";
 import { ShopSearch } from "@/components/shop/ShopSearch";
 import {
@@ -10,6 +11,7 @@ import {
   DEFAULT_SHOP_FILTERS,
   type ShopFiltersState,
 } from "@/features/shop/filter-products";
+import { motion as motionTokens } from "@/constants/design";
 import type {
   CatalogAvailability,
   CatalogCategory,
@@ -49,26 +51,35 @@ export function ShopFilters({
   className,
   id = "shop-filters",
 }: ShopFiltersProps) {
+  const reduceMotion = useReducedMotion();
+  const ease = motionTokens.easeLuxury;
+
   return (
-    <aside
+    <motion.aside
       id={id}
-      className={cn("bg-background", className)}
+      initial={reduceMotion ? false : { opacity: 0, x: -12 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: reduceMotion ? 0 : 0.55, ease }}
+      className={cn(
+        "border border-border/80 bg-background px-5 py-6 md:px-6 md:py-7",
+        className,
+      )}
       aria-label="Product filters"
     >
-      <div className="mb-8 flex items-center justify-between gap-3 border-b border-border pb-4">
-        <h2 className="text-[11px] uppercase tracking-[0.24em] text-accent">
-          Filter
+      <div className="mb-9 flex items-center justify-between gap-3 border-b border-border pb-5">
+        <h2 className="text-[10px] uppercase tracking-[0.28em] text-accent">
+          Refine
         </h2>
         <button
           type="button"
-          className="text-[11px] uppercase tracking-[0.16em] text-muted transition-colors hover:text-accent"
+          className="text-[10px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent"
           onClick={() => onChange(DEFAULT_SHOP_FILTERS)}
         >
-          Reset
+          Clear all
         </button>
       </div>
 
-      <div className="space-y-9">
+      <div className="space-y-10">
         <ShopSearch
           value={filters.query}
           onChange={(query) => onChange({ ...filters, query })}
@@ -304,6 +315,6 @@ export function ShopFilters({
           </ul>
         </fieldset>
       </div>
-    </aside>
+    </motion.aside>
   );
 }

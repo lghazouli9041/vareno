@@ -1,15 +1,20 @@
 export const FINISHES = [
-  { slug: "brushed-gold", name: "Brushed Gold", hex: "#C9A14A" },
+  { slug: "polished-brass", name: "Polished Brass", hex: "#C5A45A" },
+  { slug: "antique-brass", name: "Antique Brass", hex: "#9A7B3C" },
+  { slug: "aged-brass", name: "Aged Brass", hex: "#7A6236" },
   { slug: "matte-black", name: "Matte Black", hex: "#1A1A1A" },
-  { slug: "polished-chrome", name: "Polished Chrome", hex: "#C8C8C8" },
-  { slug: "brushed-nickel", name: "Brushed Nickel", hex: "#A8A29A" },
-  { slug: "polished-brass", name: "Polished Brass", hex: "#B8860B" },
-  { slug: "satin-bronze", name: "Satin Bronze", hex: "#8B6914" },
+  { slug: "chrome", name: "Chrome", hex: "#D4D4D4" },
+  // Legacy aliases still referenced in older data
+  { slug: "brushed-gold", name: "Polished Brass", hex: "#C5A45A" },
+  { slug: "polished-chrome", name: "Chrome", hex: "#D4D4D4" },
+  { slug: "brushed-nickel", name: "Aged Brass", hex: "#7A6236" },
+  { slug: "satin-brass", name: "Antique Brass", hex: "#9A7B3C" },
+  { slug: "gunmetal", name: "Matte Black", hex: "#1A1A1A" },
 ] as const;
 
 export const CATEGORIES = [
-  { slug: "kitchen", name: "Kitchen Faucets", href: "/kitchen-faucets" },
-  { slug: "bathroom", name: "Bathroom Faucets", href: "/bathroom-faucets" },
+  { slug: "kitchen", name: "Kitchen Faucets", href: "/shop?category=kitchen" },
+  { slug: "bathroom", name: "Bathroom Faucets", href: "/shop?category=bathroom" },
 ] as const;
 
 export const INSTALLATION_TYPES = [

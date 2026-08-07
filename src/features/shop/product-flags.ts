@@ -56,24 +56,25 @@ export function popularityScore(product: CatalogProduct): number {
 /** Color families for shop filter (maps to finish slugs). */
 export const COLOR_FILTERS = [
   {
-    id: "gold",
-    label: "Gold / Brass",
-    finishSlugs: ["brushed-gold", "satin-brass"],
+    id: "brass",
+    label: "Brass",
+    finishSlugs: [
+      "polished-brass",
+      "antique-brass",
+      "aged-brass",
+      "brushed-gold",
+      "satin-brass",
+    ],
   },
   {
     id: "black",
-    label: "Black / Dark",
+    label: "Matte Black",
     finishSlugs: ["matte-black", "gunmetal"],
   },
   {
     id: "chrome",
     label: "Chrome",
-    finishSlugs: ["polished-chrome"],
-  },
-  {
-    id: "nickel",
-    label: "Nickel",
-    finishSlugs: ["brushed-nickel"],
+    finishSlugs: ["chrome", "polished-chrome"],
   },
 ] as const;
 

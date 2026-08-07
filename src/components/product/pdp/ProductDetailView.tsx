@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/layout/Container";
 import { ProductGallery } from "@/components/product/pdp/ProductGallery";
 import { ProductInfoSections } from "@/components/product/pdp/ProductInfoSections";
@@ -11,6 +11,7 @@ import { ProductReviews } from "@/components/product/pdp/ProductReviews";
 import { ProductUpsells } from "@/components/product/pdp/ProductUpsells";
 import { Button } from "@/components/ui/Button";
 import { motion as motionTokens } from "@/constants/design";
+import { resolveProductGallery } from "@/lib/catalog/finish-gallery";
 import { catalogToCartProduct } from "@/lib/catalog-to-cart";
 import { formatPrice } from "@/lib/utils";
 import { useCartStore } from "@/store/cart";
@@ -42,12 +43,13 @@ export function ProductDetailView({
 
   const collectionName = collectionNameProp ?? product.collection;
 
-  const images = Array.from(
-    new Set([product.featuredImage, ...product.gallery]),
+  const images = useMemo(
+    () => resolveProductGallery(product, selectedFinish),
+    [product, selectedFinish],
   );
 
   useEffect(() => {
-    const onScroll = () => setShowSticky(window.scrollY > 640);
+    const onScroll = () => setShowSticky(window.scrollY > 560);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -60,14 +62,14 @@ export function ProductDetailView({
 
   return (
     <>
-      <Container className="pb-28 pt-28 md:pb-32 md:pt-36">
+      <Container className="pb-28 pt-28 md:pb-36 md:pt-36">
         <motion.div
-          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: reduceMotion ? 0 : 0.7, ease }}
+          transition={{ duration: reduceMotion ? 0 : 0.9, ease }}
         >
-          <nav aria-label="Breadcrumb" className="mb-10 md:mb-14">
-            <ol className="flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-muted">
+          <nav aria-label="Breadcrumb" className="mb-12 md:mb-16">
+            <ol className="flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.24em] text-muted">
               <li>
                 <Link
                   href="/"
@@ -101,11 +103,25 @@ export function ProductDetailView({
             </ol>
           </nav>
 
-          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:gap-16 xl:gap-20">
-            <ProductGallery name={product.name} images={images} />
+          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(320px,0.75fr)] lg:gap-16 xl:gap-24">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedFinish.id}
+                initial={reduceMotion ? false : { opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={reduceMotion ? undefined : { opacity: 0 }}
+                transition={{ duration: reduceMotion ? 0 : 0.55, ease }}
+              >
+                <ProductGallery
+                  name={`${product.name} — ${selectedFinish.name}`}
+                  images={images}
+                  finishLabel={selectedFinish.name}
+                />
+              </motion.div>
+            </AnimatePresence>
 
             <aside className="lg:sticky lg:top-28 lg:self-start">
-              <div className="border border-border/60 bg-background px-5 py-7 md:px-7 md:py-8">
+              <div className="border border-border/70 bg-background/90 px-6 py-8 shadow-sm backdrop-blur-sm md:px-8 md:py-10">
                 <ProductPurchasePanel
                   product={product}
                   selectedFinish={selectedFinish}
@@ -116,7 +132,10 @@ export function ProductDetailView({
             </aside>
           </div>
 
-          <ProductInfoSections product={product} />
+          <ProductInfoSections
+            product={product}
+            selectedFinish={selectedFinish}
+          />
           <ProductReviews product={product} reviews={reviews} />
           <ProductUpsells
             product={product}
@@ -129,7 +148,7 @@ export function ProductDetailView({
       </Container>
 
       <div
-        className={`fixed inset-x-0 bottom-0 z-[70] border-t border-border/80 bg-background/92 shadow-[0_-10px_36px_rgb(17_17_17_/_0.06)] backdrop-blur-xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed inset-x-0 bottom-0 z-[70] border-t border-border/70 bg-background/88 shadow-[0_-12px_40px_rgb(17_17_17_/_0.06)] backdrop-blur-xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           showSticky ? "translate-y-0" : "translate-y-full"
         }`}
         aria-hidden={!showSticky}
@@ -150,11 +169,7 @@ export function ProductDetailView({
             disabled={!canPurchase}
             onClick={() =>
               addItem(
-                catalogToCartProduct(
-                  product,
-                  selectedFinish,
-                  collectionName,
-                ),
+                catalogToCartProduct(product, selectedFinish, collectionName),
                 1,
               )
             }

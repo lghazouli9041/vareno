@@ -32,23 +32,23 @@ function MiniCard({
       href={`/products/${product.slug}`}
       className="group block w-[220px] shrink-0 snap-start sm:w-[240px]"
     >
-      <div className="relative aspect-[3/4] overflow-hidden bg-surface">
+      <div className="relative aspect-[3/4] overflow-hidden bg-surface shadow-sm">
         <Image
           src={product.featuredImage}
           alt={product.name}
           fill
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
           sizes="240px"
         />
       </div>
-      <div className="pt-4">
-        <p className="text-[10px] uppercase tracking-[0.18em] text-accent">
+      <div className="pt-5">
+        <p className="text-[10px] uppercase tracking-[0.22em] text-muted">
           {collection}
         </p>
-        <h3 className="mt-1.5 font-display text-xl leading-tight text-primary transition-colors group-hover:text-accent">
+        <h3 className="mt-2 font-display text-xl leading-tight text-primary transition-colors group-hover:text-accent">
           {product.name}
         </h3>
-        <p className="mt-2 text-sm text-muted">
+        <p className="mt-2 font-display text-lg text-primary">
           {formatPrice(product.price)}
         </p>
       </div>

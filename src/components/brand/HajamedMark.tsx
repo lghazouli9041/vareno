@@ -7,8 +7,8 @@ export type MarkVariant = "black" | "white" | "gold";
 
 const MARK_COLORS: Record<MarkVariant, string> = {
   black: "#111111",
-  white: "#FAFAFA",
-  gold: "#C9A14A",
+  white: "#F8F6F2",
+  gold: "#B68D40",
 };
 
 interface HajamedMonogramProps {

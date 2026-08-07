@@ -14,7 +14,27 @@ interface DesktopNavProps {
 function isActive(pathname: string, item: NavItem): boolean {
   if (item.href === "/") return pathname === "/";
   if (pathname === item.href) return true;
-  return Boolean(item.children?.some((child) => pathname === child.href));
+  return Boolean(
+    item.children?.some((child) => pathname === child.href.split("?")[0]),
+  );
+}
+
+function NavLinkStyles({
+  inverted,
+  active,
+}: {
+  inverted?: boolean;
+  active?: boolean;
+}) {
+  return cn(
+    "relative inline-flex items-center gap-1.5 py-1 text-[10px] uppercase tracking-[0.28em] transition-colors duration-300",
+    "after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-accent after:transition-transform after:duration-500 after:ease-[cubic-bezier(0.22,1,0.36,1)]",
+    "hover:after:scale-x-100",
+    inverted
+      ? "text-inverse-text/90 hover:text-accent"
+      : "text-muted hover:text-primary",
+    active && "text-accent after:scale-x-100",
+  );
 }
 
 function NavDropdown({
@@ -42,22 +62,16 @@ function NavDropdown({
     >
       <button
         type="button"
-        className={cn(
-          "inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] transition-colors duration-300",
-          inverted
-            ? "text-inverse-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] hover:text-accent"
-            : "text-muted hover:text-accent",
-          active && "text-accent",
-        )}
+        className={NavLinkStyles({ inverted, active })}
         aria-expanded={open}
         aria-haspopup="true"
       >
         {item.label}
         <ChevronDown
-          size={12}
+          size={11}
           strokeWidth={1.5}
           className={cn(
-            "transition-transform duration-300",
+            "transition-transform duration-400",
             open && "rotate-180",
           )}
         />
@@ -65,23 +79,20 @@ function NavDropdown({
 
       <div
         className={cn(
-          "absolute left-1/2 top-full z-50 w-56 -translate-x-1/2 pt-4 transition-all duration-300",
+          "absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 pt-5 transition-all duration-400",
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-1 opacity-0",
         )}
       >
-        <div className="rounded-lg border border-border bg-background/95 p-3 shadow-md backdrop-blur-md">
+        <div className="border border-border/80 bg-background/95 p-2 shadow-md backdrop-blur-xl">
           <ul className="space-y-0.5" role="menu">
             {item.children?.map((child) => (
-              <li key={child.href} role="none">
+              <li key={`${child.label}-${child.href}`} role="none">
                 <Link
                   href={child.href}
                   role="menuitem"
-                  className={cn(
-                    "block rounded-md px-3 py-2.5 text-[11px] uppercase tracking-[0.16em] text-muted transition-colors duration-300 hover:bg-secondary hover:text-accent",
-                    pathname === child.href && "bg-secondary text-accent",
-                  )}
+                  className="block px-3 py-2.5 text-[10px] uppercase tracking-[0.22em] text-muted transition-colors duration-300 hover:bg-secondary hover:text-accent"
                 >
                   {child.label}
                 </Link>
@@ -98,24 +109,18 @@ export function DesktopNav({ inverted = false }: DesktopNavProps) {
   const pathname = usePathname();
 
   return (
-    <nav
-      className="hidden items-center gap-9 lg:flex"
-      aria-label="Primary"
-    >
+    <nav className="hidden items-center gap-10 lg:flex" aria-label="Primary">
       {mainNavigation.map((item) =>
         item.children?.length ? (
-          <NavDropdown key={item.href} item={item} inverted={inverted} />
+          <NavDropdown key={item.label} item={item} inverted={inverted} />
         ) : (
           <Link
-            key={item.href}
+            key={item.label}
             href={item.href}
-            className={cn(
-              "text-[11px] uppercase tracking-[0.2em] transition-colors duration-300",
-              inverted
-                ? "text-inverse-text drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] hover:text-accent"
-                : "text-muted hover:text-accent",
-              isActive(pathname, item) && "text-accent",
-            )}
+            className={NavLinkStyles({
+              inverted,
+              active: isActive(pathname, item),
+            })}
           >
             {item.label}
           </Link>

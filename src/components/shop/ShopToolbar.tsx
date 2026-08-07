@@ -35,11 +35,14 @@ export function ShopToolbar({
   onOpenFilters,
 }: ShopToolbarProps) {
   return (
-    <div className="sticky top-20 z-30 -mx-6 border-y border-border bg-background/95 px-6 py-4 backdrop-blur-md md:top-24 lg:mx-0 lg:px-0">
+    <div className="sticky top-[5.25rem] z-30 -mx-6 border-y border-border/80 bg-background/85 px-6 py-4 backdrop-blur-xl md:top-24 lg:mx-0 lg:px-0">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-muted" aria-live="polite">
+        <p
+          className="text-[11px] uppercase tracking-[0.18em] text-muted"
+          aria-live="polite"
+        >
           Showing{" "}
-          <span className="font-medium text-primary">{count}</span>
+          <span className="text-primary">{count}</span>
           {count !== totalCount && (
             <>
               {" "}

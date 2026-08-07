@@ -149,7 +149,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
         <nav className="flex-1 overflow-y-auto px-6 py-4" aria-label="Mobile">
           {mainNavigation.map((item) => (
-            <MobileNavGroup key={item.href} item={item} onNavigate={onClose} />
+            <MobileNavGroup key={item.label} item={item} onNavigate={onClose} />
           ))}
         </nav>
 

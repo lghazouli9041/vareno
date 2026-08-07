@@ -15,6 +15,8 @@ export type CatalogFinishOption = {
   sku: string;
   price: number;
   available: boolean;
+  /** Finish-specific lifestyle / product photography shown when selected. */
+  images?: string[];
 };
 
 export type CatalogDimensions = {

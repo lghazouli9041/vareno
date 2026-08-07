@@ -28,7 +28,7 @@ export function Header() {
   const inverted = isHome && !scrolled && !mobileOpen;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 32);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -42,24 +42,25 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[60] transition-all duration-500",
+          "fixed inset-x-0 top-0 z-[60] transition-[background-color,box-shadow,backdrop-filter,border-color] duration-500",
           inverted
-            ? "bg-transparent"
-            : "border-b border-border/80 bg-background/90 shadow-xs backdrop-blur-md",
+            ? "border-b border-transparent bg-transparent"
+            : "border-b border-border/60 bg-background/80 shadow-xs backdrop-blur-xl",
         )}
       >
         {inverted && (
           <div
-            className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-primary/45 to-transparent"
+            className="pointer-events-none absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-primary/50 to-transparent"
             aria-hidden="true"
           />
         )}
+
         <Container className="relative">
-          <div className="flex h-20 items-center justify-between gap-6">
+          <div className="flex h-[5.25rem] items-center justify-between gap-6">
             <Logo
               inverted={inverted}
               className={cn(
-                inverted && "drop-shadow-[0_2px_12px_rgba(0,0,0,0.55)]",
+                inverted && "drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]",
               )}
             />
 
@@ -67,8 +68,8 @@ export function Header() {
 
             <div
               className={cn(
-                "flex items-center gap-1 sm:gap-2",
-                inverted && "drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]",
+                "flex items-center gap-0.5 sm:gap-1",
+                inverted && "drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]",
               )}
             >
               <HeaderAuth inverted={inverted} />
@@ -76,7 +77,7 @@ export function Header() {
               <Link
                 href="/wishlist"
                 className={cn(
-                  "relative hidden p-2 transition-colors duration-300 sm:inline-flex",
+                  "relative hidden p-2.5 transition-colors duration-300 sm:inline-flex",
                   inverted
                     ? "text-inverse-text hover:text-accent"
                     : "text-primary hover:text-accent",
@@ -84,12 +85,12 @@ export function Header() {
                 aria-label={`Wishlist${wishlistCount ? `, ${wishlistCount} items` : ""}`}
               >
                 <Heart
-                  size={20}
-                  strokeWidth={1.5}
+                  size={18}
+                  strokeWidth={1.35}
                   className={cn(wishlistCount > 0 && "fill-current text-accent")}
                 />
                 {wishlistCount > 0 && (
-                  <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-medium text-primary">
+                  <span className="absolute right-1 top-1 flex h-3.5 min-w-3.5 items-center justify-center bg-accent px-1 text-[9px] font-medium text-primary">
                     {wishlistCount}
                   </span>
                 )}
@@ -99,16 +100,16 @@ export function Header() {
                 type="button"
                 onClick={openCart}
                 className={cn(
-                  "relative p-2 transition-colors duration-300",
+                  "relative p-2.5 transition-colors duration-300",
                   inverted
                     ? "text-inverse-text hover:text-accent"
                     : "text-primary hover:text-accent",
                 )}
                 aria-label={`Shopping cart${itemCount ? `, ${itemCount} items` : ""}`}
               >
-                <ShoppingBag size={20} strokeWidth={1.5} />
+                <ShoppingBag size={18} strokeWidth={1.35} />
                 {itemCount > 0 && (
-                  <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-medium text-primary">
+                  <span className="absolute right-1 top-1 flex h-3.5 min-w-3.5 items-center justify-center bg-accent px-1 text-[9px] font-medium text-primary">
                     {itemCount}
                   </span>
                 )}
@@ -117,14 +118,14 @@ export function Header() {
               <button
                 type="button"
                 className={cn(
-                  "p-2 transition-colors duration-300 lg:hidden",
+                  "p-2.5 transition-colors duration-300 lg:hidden",
                   inverted ? "text-inverse-text" : "text-primary",
                 )}
                 onClick={() => setMobileOpen(true)}
                 aria-label="Open menu"
                 aria-expanded={mobileOpen}
               >
-                <Menu size={22} strokeWidth={1.5} />
+                <Menu size={22} strokeWidth={1.35} />
               </button>
             </div>
           </div>

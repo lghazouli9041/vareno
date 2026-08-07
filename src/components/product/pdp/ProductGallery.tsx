@@ -10,9 +10,14 @@ import { cn } from "@/lib/utils";
 interface ProductGalleryProps {
   name: string;
   images: string[];
+  finishLabel?: string;
 }
 
-export function ProductGallery({ name, images }: ProductGalleryProps) {
+export function ProductGallery({
+  name,
+  images,
+  finishLabel,
+}: ProductGalleryProps) {
   const reduceMotion = useReducedMotion();
   const ease = motionTokens.easeLuxury;
   const labelId = useId();
@@ -21,7 +26,7 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
   const [lightbox, setLightbox] = useState(false);
   const [origin, setOrigin] = useState({ x: 50, y: 50 });
 
-  const current = gallery[active] ?? gallery[0];
+  const current = gallery[Math.min(active, gallery.length - 1)] ?? gallery[0];
   const count = gallery.length;
 
   const go = useCallback(
@@ -30,6 +35,12 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
     },
     [count],
   );
+
+  const galleryKey = gallery.join("|");
+
+  useEffect(() => {
+    setActive(0);
+  }, [galleryKey]);
 
   useEffect(() => {
     if (!lightbox) return;
@@ -52,7 +63,7 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
   return (
     <div className="space-y-4 md:space-y-5">
       <div
-        className="group relative aspect-[4/5] overflow-hidden bg-surface md:aspect-[3/4] lg:aspect-[4/5]"
+        className="group relative aspect-[4/5] overflow-hidden bg-surface shadow-sm md:aspect-[3/4] lg:min-h-[36rem] lg:aspect-[4/5]"
         onMouseMove={(event) => {
           if (reduceMotion) return;
           const rect = event.currentTarget.getBoundingClientRect();
@@ -80,7 +91,7 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
               className={cn(
                 "object-cover",
                 !reduceMotion &&
-                  "transition-transform duration-700 ease-out group-hover:scale-[1.12]",
+                  "transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.18]",
               )}
               style={
                 reduceMotion
@@ -96,7 +107,7 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
             <button
               type="button"
               onClick={() => go(-1)}
-              className="absolute left-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-border/70 bg-background/80 p-2 text-primary opacity-0 backdrop-blur-md transition-opacity duration-300 hover:border-accent hover:text-accent group-hover:opacity-100 focus-visible:opacity-100"
+              className="absolute left-3 top-1/2 z-10 -translate-y-1/2 border border-border/70 bg-background/85 p-2 text-primary opacity-0 backdrop-blur-md transition-opacity duration-300 hover:border-accent hover:text-accent group-hover:opacity-100 focus-visible:opacity-100"
               aria-label="Previous image"
             >
               <ChevronLeft size={18} strokeWidth={1.5} />
@@ -104,7 +115,7 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
             <button
               type="button"
               onClick={() => go(1)}
-              className="absolute right-3 top-1/2 z-10 -translate-y-1/2 rounded-full border border-border/70 bg-background/80 p-2 text-primary opacity-0 backdrop-blur-md transition-opacity duration-300 hover:border-accent hover:text-accent group-hover:opacity-100 focus-visible:opacity-100"
+              className="absolute right-3 top-1/2 z-10 -translate-y-1/2 border border-border/70 bg-background/85 p-2 text-primary opacity-0 backdrop-blur-md transition-opacity duration-300 hover:border-accent hover:text-accent group-hover:opacity-100 focus-visible:opacity-100"
               aria-label="Next image"
             >
               <ChevronRight size={18} strokeWidth={1.5} />
@@ -119,12 +130,19 @@ export function ProductGallery({ name, images }: ProductGalleryProps) {
           aria-label="Open full-screen gallery"
         >
           <Expand size={14} strokeWidth={1.5} />
-          View
+          Fullscreen
         </button>
 
-        <p className="absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.18em] text-primary/70">
-          {active + 1} / {count}
-        </p>
+        <div className="absolute bottom-4 left-4 z-10 space-y-1">
+          {finishLabel && (
+            <p className="text-[10px] uppercase tracking-[0.22em] text-accent">
+              {finishLabel}
+            </p>
+          )}
+          <p className="text-[10px] uppercase tracking-[0.18em] text-inverse-text/80 drop-shadow">
+            {active + 1} / {count}
+          </p>
+        </div>
       </div>
 
       <ul

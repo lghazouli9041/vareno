@@ -30,20 +30,25 @@ interface ShopViewProps {
   initialProducts: CatalogProduct[];
   collections: CatalogCollection[];
   initialCollection?: string;
+  initialCategory?: "kitchen" | "bathroom";
+  initialQuery?: string;
 }
 
 export function ShopView({
   initialProducts,
   collections,
   initialCollection,
+  initialCategory,
+  initialQuery,
 }: ShopViewProps) {
   const reduceMotion = useReducedMotion();
   const ease = motionTokens.easeLuxury;
-  const [filters, setFilters] = useState<ShopFiltersState>(() =>
-    initialCollection
-      ? { ...DEFAULT_SHOP_FILTERS, collections: [initialCollection] }
-      : DEFAULT_SHOP_FILTERS,
-  );
+  const [filters, setFilters] = useState<ShopFiltersState>(() => ({
+    ...DEFAULT_SHOP_FILTERS,
+    ...(initialCollection ? { collections: [initialCollection] } : {}),
+    ...(initialCategory ? { categories: [initialCategory] } : {}),
+    ...(initialQuery ? { query: initialQuery } : {}),
+  }));
   const [sort, setSort] = useState<ShopSort>("featured");
   const [viewMode, setViewMode] = useState<ShopViewMode>("grid");
   const [page, setPage] = useState(1);
@@ -98,16 +103,20 @@ export function ShopView({
 
   return (
     <>
-      <ShopBanner />
+      <ShopBanner
+        category={initialCategory}
+        query={initialQuery}
+        collection={initialCollection}
+      />
 
       <section
-        className="bg-background py-10 md:py-14"
+        className="bg-background py-12 md:py-16"
         aria-label="Shop catalog"
       >
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-14">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[280px_minmax(0,1fr)] lg:gap-16">
             <div className="hidden lg:block">
-              <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pb-8 pr-2">
+              <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pb-8 pr-1">
                 <ShopFilters
                   filters={filters}
                   onChange={updateFilters}
@@ -139,12 +148,12 @@ export function ShopView({
                 <AnimatePresence mode="wait">
                   <motion.ul
                     key={`${safePage}-${viewMode}-${deferredSort}-${deferredFilters.query}`}
-                    initial={reduceMotion || isPending ? false : { opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={reduceMotion || isPending ? false : { opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
                     exit={reduceMotion ? undefined : { opacity: 0 }}
-                    transition={{ duration: reduceMotion ? 0 : 0.3, ease }}
+                    transition={{ duration: reduceMotion ? 0 : 0.45, ease }}
                     className={cn(
-                      "mt-8 grid gap-x-6 gap-y-10 md:gap-y-12",
+                      "mt-10 grid gap-x-8 gap-y-14 md:gap-y-16",
                       viewMode === "grid"
                         ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
                         : "grid-cols-1",

@@ -5,30 +5,109 @@ export type NavItem = {
 };
 
 export const mainNavigation: NavItem[] = [
-  { label: "Home", href: "/" },
   { label: "Shop", href: "/shop" },
-  { label: "Kitchen", href: "/kitchen" },
-  { label: "Bathroom", href: "/bathroom" },
-  { label: "Collections", href: "/collections" },
+  {
+    label: "Collections",
+    href: "/collections",
+    children: [
+      { label: "All Collections", href: "/collections" },
+      { label: "Kitchen Faucets", href: "/shop?category=kitchen" },
+      { label: "Bathroom Faucets", href: "/shop?category=bathroom" },
+      { label: "Accessories", href: "/shop?q=accessories" },
+      { label: "New Arrivals", href: "/shop" },
+    ],
+  },
+  { label: "Craftsmanship", href: "/craftsmanship" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const footerNavigation = {
   shop: [
-    { label: "Shop", href: "/shop" },
-    { label: "Kitchen", href: "/kitchen" },
-    { label: "Bathroom", href: "/bathroom" },
+    { label: "All Products", href: "/shop" },
     { label: "Collections", href: "/collections" },
+    { label: "Kitchen Faucets", href: "/shop?category=kitchen" },
+    { label: "Bathroom Faucets", href: "/shop?category=bathroom" },
+    { label: "Accessories", href: "/shop?q=accessories" },
   ],
   company: [
-    { label: "About", href: "/about" },
+    { label: "About VARENO", href: "/about" },
+    { label: "Craftsmanship", href: "/craftsmanship" },
     { label: "Trade Program", href: "/trade-program" },
     { label: "Contact", href: "/contact" },
   ],
   support: [
     { label: "Warranty", href: "/warranty" },
     { label: "Shipping & Returns", href: "/shipping-returns" },
-    { label: "Contact", href: "/contact" },
+    { label: "Concierge", href: "/contact" },
   ],
 } as const;
+
+/** Four featured collection cards on the homepage. */
+export const featuredCollections = [
+  {
+    id: "kitchen",
+    title: "Kitchen Faucets",
+    href: "/shop?category=kitchen",
+    image:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d4046?w=1400&q=88",
+    imageAlt: "Solid brass kitchen faucet in a refined kitchen",
+  },
+  {
+    id: "bathroom",
+    title: "Bathroom Faucets",
+    href: "/shop?category=bathroom",
+    image:
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1400&q=88",
+    imageAlt: "Handcrafted brass bathroom faucet",
+  },
+  {
+    id: "accessories",
+    title: "Accessories",
+    href: "/shop?q=accessories",
+    image:
+      "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1400&q=88",
+    imageAlt: "Luxury brass bathroom accessories",
+  },
+  {
+    id: "new",
+    title: "New Arrivals",
+    href: "/shop",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=88",
+    imageAlt: "New VARENO brass fixtures in a luxury interior",
+  },
+] as const;
+
+export const instagramGallery = [
+  {
+    id: "ig1",
+    src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=85",
+    alt: "Luxury bathroom with brass fixtures",
+  },
+  {
+    id: "ig2",
+    src: "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=900&q=85",
+    alt: "Brass towel rail detail",
+  },
+  {
+    id: "ig3",
+    src: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=900&q=85",
+    alt: "Warm brass accents in a bath",
+  },
+  {
+    id: "ig4",
+    src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=85",
+    alt: "Elegant interior with metal hardware",
+  },
+  {
+    id: "ig5",
+    src: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=900&q=85",
+    alt: "Marble bath with brass faucet",
+  },
+  {
+    id: "ig6",
+    src: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=900&q=85",
+    alt: "Close-up of handcrafted brass faucet",
+  },
+] as const;
