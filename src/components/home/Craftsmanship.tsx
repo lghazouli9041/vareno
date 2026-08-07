@@ -13,17 +13,17 @@ export function Craftsmanship() {
   return (
     <Section
       id="craftsmanship"
-      tone="surface"
+      tone="default"
       aria-labelledby="craftsmanship-heading"
       className="overflow-hidden"
-      containerClassName="grid items-center gap-12 lg:grid-cols-2 lg:gap-20"
+      containerClassName="grid items-center gap-14 lg:grid-cols-2 lg:gap-20"
     >
       <motion.div
-        className="relative aspect-[4/5] overflow-hidden bg-primary/5 lg:aspect-[5/6]"
+        className="relative aspect-[4/5] overflow-hidden bg-surface shadow-sm lg:aspect-[5/6]"
         initial={reduceMotion ? false : { opacity: 0, x: -36 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: reduceMotion ? 0 : 1, ease }}
+        transition={{ duration: reduceMotion ? 0 : 1.05, ease }}
       >
         <Image
           src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1600&q=88"
@@ -38,10 +38,10 @@ export function Craftsmanship() {
         initial={reduceMotion ? false : { opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.35 }}
-        transition={{ duration: reduceMotion ? 0 : 0.9, delay: 0.1, ease }}
-        className="max-w-xl lg:py-8"
+        transition={{ duration: reduceMotion ? 0 : 0.95, delay: 0.1, ease }}
+        className="max-w-xl lg:py-10"
       >
-        <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-accent">
+        <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-accent">
           Craftsmanship
         </p>
         <h2
@@ -55,18 +55,17 @@ export function Craftsmanship() {
         <div className="gold-line mt-8" aria-hidden="true" />
         <p className="mt-8 text-pretty text-sm leading-[1.95] text-muted md:text-base">
           Every VARENO fixture begins as solid brass—cast, machined, and
-          finished by hand. Surfaces are polished, brushed, or allowed to deepen
-          into living patina. Nothing is plated thin; nothing is rushed. The
-          result is hardware with weight, warmth, and the quiet authority of
-          European atelier tradition.
+          finished by hand. Surfaces are polished, antiqued, or aged until the
+          metal carries the quiet authority of European atelier tradition.
+          Nothing is plated thin. Nothing is rushed.
         </p>
         <p className="mt-5 text-pretty text-sm leading-[1.95] text-muted md:text-base">
-          From kitchen taps to the smallest robe hook, each piece is made to age
-          with grace—and to remain beautiful for decades.
+          From kitchen taps to shower systems and the smallest accessory, each
+          piece is made to age with character—and remain beautiful for decades.
         </p>
         <div className="mt-10">
           <Button href="/craftsmanship" variant="outline" size="md">
-            Discover the Process
+            Discover Craftsmanship
           </Button>
         </div>
       </motion.div>

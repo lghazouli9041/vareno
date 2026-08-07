@@ -113,7 +113,7 @@
   --container-max: 80rem;
   --container-narrow: 42rem;
   --header-height: 5.25rem;
-  --section-y: clamp(5.5rem, 12vw, 9.5rem);
+  --section-y: clamp(6rem, 12vw, 10rem);
   --heading-tracking: -0.015em;
   --eyebrow-tracking: 0.3em;
 }

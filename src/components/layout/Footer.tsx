@@ -30,14 +30,13 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-14 border-b border-inverse-text/10 pb-16 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-5">
             <p className="text-[10px] uppercase tracking-[0.32em] text-accent">
-              Private List
+              Newsletter
             </p>
             <h2 className="mt-4 font-display text-3xl text-inverse-text md:text-4xl">
               Join the VARENO Collection
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-inverse-text/50">
-              Early access to new brass pieces, atelier notes, and invitations
-              reserved for collectors.
+              Early access to new brass pieces and private atelier notes.
             </p>
             <form
               onSubmit={onSubmit}
@@ -61,7 +60,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="min-h-12 bg-accent px-7 text-[10px] font-medium uppercase tracking-[0.24em] text-primary transition-colors hover:bg-accent-hover"
+                className="min-h-12 bg-accent px-7 text-[10px] font-medium uppercase tracking-[0.24em] text-primary transition-colors duration-500 hover:bg-accent-hover"
               >
                 Subscribe
               </button>
@@ -76,10 +75,10 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:col-span-7 lg:grid-cols-3">
             <div>
               <h3 className="mb-5 text-[10px] uppercase tracking-[0.28em] text-accent">
-                Categories
+                Collections
               </h3>
               <ul className="space-y-3.5">
-                {footerNavigation.shop.map((link) => (
+                {footerNavigation.collections.map((link) => (
                   <li key={`${link.label}-${link.href}`}>
                     <Link
                       href={link.href}
@@ -93,7 +92,7 @@ export function Footer() {
             </div>
             <div>
               <h3 className="mb-5 text-[10px] uppercase tracking-[0.28em] text-accent">
-                Maison
+                Company
               </h3>
               <ul className="space-y-3.5">
                 {footerNavigation.company.map((link) => (
@@ -113,6 +112,16 @@ export function Footer() {
                 Contact
               </h3>
               <ul className="space-y-3.5 text-sm text-inverse-text/55">
+                {footerNavigation.contact.map((link) => (
+                  <li key={`${link.label}-${link.href}`}>
+                    <Link
+                      href={link.href}
+                      className="transition-colors hover:text-accent"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
                 <li>
                   <a
                     href={`mailto:${siteConfig.supportEmail}`}
@@ -129,12 +138,6 @@ export function Footer() {
                     {siteConfig.phone}
                   </a>
                 </li>
-                <li className="leading-relaxed">
-                  {siteConfig.address.street}
-                  <br />
-                  {siteConfig.address.city}, {siteConfig.address.state}{" "}
-                  {siteConfig.address.zip}
-                </li>
               </ul>
             </div>
           </div>
@@ -144,8 +147,7 @@ export function Footer() {
           <div>
             <Logo inverted />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-inverse-text/45">
-              Handcrafted solid brass fixtures for extraordinary European-minded
-              homes.
+              Handcrafted solid brass for extraordinary European-minded homes.
             </p>
           </div>
 
@@ -180,22 +182,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-inverse-text/10 pt-8 md:flex-row md:items-center">
+        <div className="mt-12 border-t border-inverse-text/10 pt-8">
           <p className="text-xs text-inverse-text/35">
             &copy; {new Date().getFullYear()} {siteConfig.legalName}. All rights
             reserved.
           </p>
-          <div className="flex flex-wrap gap-6 text-[10px] uppercase tracking-[0.2em] text-inverse-text/35">
-            {footerNavigation.support.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="transition-colors hover:text-accent"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
         </div>
       </Container>
     </footer>

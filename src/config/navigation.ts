@@ -13,8 +13,8 @@ export const mainNavigation: NavItem[] = [
       { label: "All Collections", href: "/collections" },
       { label: "Kitchen Faucets", href: "/shop?category=kitchen" },
       { label: "Bathroom Faucets", href: "/shop?category=bathroom" },
+      { label: "Shower Systems", href: "/shop?q=shower" },
       { label: "Accessories", href: "/shop?q=accessories" },
-      { label: "New Arrivals", href: "/shop" },
     ],
   },
   { label: "Craftsmanship", href: "/craftsmanship" },
@@ -23,23 +23,23 @@ export const mainNavigation: NavItem[] = [
 ];
 
 export const footerNavigation = {
-  shop: [
-    { label: "All Products", href: "/shop" },
-    { label: "Collections", href: "/collections" },
+  collections: [
     { label: "Kitchen Faucets", href: "/shop?category=kitchen" },
     { label: "Bathroom Faucets", href: "/shop?category=bathroom" },
+    { label: "Shower Systems", href: "/shop?q=shower" },
     { label: "Accessories", href: "/shop?q=accessories" },
+    { label: "All Collections", href: "/collections" },
   ],
   company: [
     { label: "About VARENO", href: "/about" },
     { label: "Craftsmanship", href: "/craftsmanship" },
     { label: "Trade Program", href: "/trade-program" },
-    { label: "Contact", href: "/contact" },
+    { label: "Shop", href: "/shop" },
   ],
-  support: [
+  contact: [
+    { label: "Contact Concierge", href: "/contact" },
     { label: "Warranty", href: "/warranty" },
     { label: "Shipping & Returns", href: "/shipping-returns" },
-    { label: "Concierge", href: "/contact" },
   ],
 } as const;
 
@@ -62,20 +62,20 @@ export const featuredCollections = [
     imageAlt: "Handcrafted brass bathroom faucet",
   },
   {
+    id: "shower",
+    title: "Shower Systems",
+    href: "/shop?q=shower",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=88",
+    imageAlt: "Luxury brass shower system in a spa bathroom",
+  },
+  {
     id: "accessories",
     title: "Accessories",
     href: "/shop?q=accessories",
     image:
       "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1400&q=88",
     imageAlt: "Luxury brass bathroom accessories",
-  },
-  {
-    id: "new",
-    title: "New Arrivals",
-    href: "/shop",
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=88",
-    imageAlt: "New VARENO brass fixtures in a luxury interior",
   },
 ] as const;
 

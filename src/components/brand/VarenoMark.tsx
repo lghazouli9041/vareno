@@ -1,5 +1,5 @@
 /**
- * VARENO brand marks — flat color only, no gradients.
+ * VARENO brand marks — square frame + centered serif V.
  * Variants: black | white | gold
  */
 
@@ -11,19 +11,22 @@ const MARK_COLORS: Record<MarkVariant, string> = {
   gold: "#B68D40",
 };
 
-interface HajamedMonogramProps {
+interface VarenoMonogramProps {
   variant?: MarkVariant;
   className?: string;
   title?: string;
+  /** Black plate + ivory ink (favicon / app icon). */
+  onDarkPlate?: boolean;
 }
 
-/** Geometric H monogram — favicon-ready proportions (square). */
-export function HajamedMonogram({
+/** Square frame with a centered serif V monogram. */
+export function VarenoMonogram({
   variant = "black",
   className,
   title = "VARENO",
-}: HajamedMonogramProps) {
-  const fill = MARK_COLORS[variant];
+  onDarkPlate = false,
+}: VarenoMonogramProps) {
+  const ink = onDarkPlate ? "#F8F6F2" : MARK_COLORS[variant];
 
   return (
     <svg
@@ -34,38 +37,44 @@ export function HajamedMonogram({
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>{title}</title>
-      {/* Outer frame — architectural restraint */}
+      {onDarkPlate && <rect width="32" height="32" fill="#111111" />}
       <rect
-        x="1.5"
-        y="1.5"
-        width="29"
-        height="29"
+        x="2"
+        y="2"
+        width="28"
+        height="28"
         fill="none"
-        stroke={fill}
+        stroke={ink}
         strokeWidth="1"
       />
-      {/* Left stem */}
-      <rect x="8" y="7" width="2.5" height="18" fill={fill} />
-      {/* Right stem */}
-      <rect x="21.5" y="7" width="2.5" height="18" fill={fill} />
-      {/* Crossbar */}
-      <rect x="8" y="14.75" width="16" height="2.5" fill={fill} />
+      <text
+        x="16"
+        y="16"
+        fill={ink}
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontFamily="Georgia, 'Times New Roman', Times, serif"
+        fontSize="17"
+        fontWeight="500"
+      >
+        V
+      </text>
     </svg>
   );
 }
 
-interface HajamedWordmarkProps {
+interface VarenoWordmarkProps {
   variant?: MarkVariant;
   className?: string;
   showMonogram?: boolean;
 }
 
-/** Serif wordmark with wide tracking + optional monogram. */
-export function HajamedWordmark({
+/** Serif wordmark with wide tracking + V monogram. */
+export function VarenoWordmark({
   variant = "black",
   className,
   showMonogram = true,
-}: HajamedWordmarkProps) {
+}: VarenoWordmarkProps) {
   const fill = MARK_COLORS[variant];
 
   return (
@@ -73,7 +82,7 @@ export function HajamedWordmark({
       <span className="inline-flex items-center gap-3">
         {showMonogram && (
           <span aria-hidden="true" className="inline-flex">
-            <HajamedMonogram
+            <VarenoMonogram
               variant={variant}
               className="h-7 w-7 shrink-0 md:h-8 md:w-8"
             />

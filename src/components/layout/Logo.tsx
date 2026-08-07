@@ -2,9 +2,9 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import {
-  HajamedWordmark,
+  VarenoWordmark,
   type MarkVariant,
-} from "@/components/brand/HajamedMark";
+} from "@/components/brand/VarenoMark";
 
 interface LogoProps {
   className?: string;
@@ -13,6 +13,10 @@ interface LogoProps {
   variant?: MarkVariant;
 }
 
+/**
+ * Site logo — Header, Footer, Sign-in, Sign-up.
+ * Maison monogram + VARENO wordmark from VarenoMark.
+ */
 export function Logo({
   className,
   href = "/",
@@ -31,7 +35,7 @@ export function Logo({
       )}
       aria-label={`${siteConfig.name} home`}
     >
-      <HajamedWordmark variant={markVariant} showMonogram />
+      <VarenoWordmark variant={markVariant} showMonogram />
     </Link>
   );
 }

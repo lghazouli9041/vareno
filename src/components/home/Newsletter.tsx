@@ -27,22 +27,22 @@ export function Newsletter() {
       containerClassName="relative z-10 mx-auto flex max-w-2xl flex-col items-center text-center"
     >
       <div
-        className="pointer-events-none absolute inset-0 opacity-40"
+        className="pointer-events-none absolute inset-0"
         aria-hidden="true"
         style={{
           backgroundImage:
-            "radial-gradient(ellipse at 20% 20%, rgba(182,141,64,0.18), transparent 45%), radial-gradient(ellipse at 80% 80%, rgba(182,141,64,0.12), transparent 40%)",
+            "radial-gradient(ellipse at 30% 20%, rgba(182,141,64,0.16), transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(182,141,64,0.1), transparent 45%)",
         }}
       />
 
       <motion.div
-        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: reduceMotion ? 0 : 0.9, ease }}
+        transition={{ duration: reduceMotion ? 0 : 1, ease }}
         className="relative w-full"
       >
-        <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-accent">
+        <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-accent">
           Concierge List
         </p>
         <h2
@@ -52,9 +52,8 @@ export function Newsletter() {
           Join the VARENO Collection
         </h2>
         <div className="gold-line-center mt-8" aria-hidden="true" />
-        <p className="mx-auto mt-7 max-w-md text-pretty text-sm leading-relaxed text-inverse-text/55 md:text-base">
-          Receive early access to new brass collections and private atelier
-          correspondence.
+        <p className="mx-auto mt-8 max-w-md text-pretty text-sm leading-relaxed text-inverse-text/55 md:text-base">
+          Early access to new brass pieces and private atelier correspondence.
         </p>
 
         <form
@@ -79,7 +78,7 @@ export function Newsletter() {
           />
           <button
             type="submit"
-            className="min-h-12 bg-accent px-8 text-[11px] font-medium uppercase tracking-[0.22em] text-primary transition-colors duration-300 hover:bg-accent-hover"
+            className="min-h-12 bg-accent px-8 text-[11px] font-medium uppercase tracking-[0.22em] text-primary transition-colors duration-500 hover:bg-accent-hover"
           >
             Subscribe
           </button>
@@ -92,7 +91,7 @@ export function Newsletter() {
         >
           {status === "success"
             ? "Thank you. You are on the private list."
-            : "No noise—only considered notes."}
+            : "Considered correspondence only."}
         </p>
       </motion.div>
     </Section>

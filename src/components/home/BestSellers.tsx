@@ -19,18 +19,18 @@ export function BestSellers({ products, collections }: BestSellersProps) {
   return (
     <Section
       id="best-sellers"
-      tone="default"
+      tone="surface"
       aria-labelledby="best-sellers-heading"
-      containerClassName="flex flex-col gap-14 md:gap-16"
+      containerClassName="flex flex-col gap-16 md:gap-20"
     >
       <motion.header
         className="mx-auto max-w-2xl text-center"
-        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: reduceMotion ? 0 : 0.9, ease }}
+        transition={{ duration: reduceMotion ? 0 : 1, ease }}
       >
-        <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-accent">
+        <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-accent">
           Best Sellers
         </p>
         <h2
@@ -39,14 +39,14 @@ export function BestSellers({ products, collections }: BestSellersProps) {
         >
           Coveted Pieces
         </h2>
-        <p className="mx-auto mt-5 max-w-lg text-pretty text-sm leading-relaxed text-muted md:text-base">
+        <p className="mx-auto mt-6 max-w-lg text-pretty text-sm leading-relaxed text-muted md:text-base">
           The fixtures collectors return to—solid brass, hand finished, made to
           endure.
         </p>
       </motion.header>
 
       {products.length > 0 ? (
-        <ul className="grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
           {products.map((product, index) => (
             <li key={product.id}>
               <ProductCardV2

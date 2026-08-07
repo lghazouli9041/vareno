@@ -1,6 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="VARENO">
-  <rect width="1200" height="630" fill="#0D0D0D"/>
-  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#C9A14A" stroke-width="1" opacity="0.55"/>
-  <text x="600" y="300" text-anchor="middle" fill="#FAFAF8" font-family="Georgia, 'Times New Roman', serif" font-size="96" letter-spacing="18">VARENO</text>
-  <text x="600" y="370" text-anchor="middle" fill="#C9A14A" font-family="Arial, Helvetica, sans-serif" font-size="22" letter-spacing="8">CRAFTED FOR TIMELESS LIVING</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="VARENO" fill="none">
+  <rect width="1200" height="630" fill="#111111"/>
+  <rect x="48" y="48" width="1104" height="534" stroke="#F8F6F2" stroke-width="1" opacity="0.35"/>
+  <g transform="translate(536 96) scale(4)">
+    <rect x="2" y="2" width="28" height="28" stroke="#F8F6F2" stroke-width="1"/>
+    <path d="M9.2 9.2h3.4M19.4 9.2h3.4" stroke="#F8F6F2" stroke-width="1" stroke-linecap="square"/>
+    <path d="M10.9 9.2 16 24.2 21.1 9.2" stroke="#F8F6F2" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M16 11.1 17.55 12.65 16 14.2 14.45 12.65Z" stroke="#F8F6F2" stroke-width="1" stroke-linejoin="miter"/>
+  </g>
+  <text x="600" y="340" text-anchor="middle" fill="#F8F6F2" font-family="Georgia, 'Times New Roman', serif" font-size="88" letter-spacing="20">VARENO</text>
+  <text x="600" y="400" text-anchor="middle" fill="#F8F6F2" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="12" opacity="0.7">TIMELESS BRASS FOR EXTRAORDINARY HOMES</text>
 </svg>

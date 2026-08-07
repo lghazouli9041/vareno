@@ -1,6 +1,5 @@
 /**
  * Design system constants — keep in sync with `src/styles/globals.css`.
- * Prefer CSS variables in components; use these for JS/TS logic (motion, layout).
  */
 
 export const colors = {
@@ -42,7 +41,7 @@ export const motion = {
 export const layout = {
   containerMax: 1280,
   headerHeight: 84,
-  sectionY: { mobile: 80, desktop: 140 },
+  sectionY: { mobile: 88, desktop: 148 },
 } as const;
 
 export const zIndex = {

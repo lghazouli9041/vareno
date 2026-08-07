@@ -57,16 +57,16 @@ export function CustomerReviews() {
       id="testimonials"
       tone="surface"
       aria-labelledby="testimonials-heading"
-      containerClassName="flex flex-col gap-14 md:gap-16"
+      containerClassName="flex flex-col gap-16 md:gap-20"
     >
       <motion.header
         className="mx-auto max-w-2xl text-center"
-        initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+        initial={reduceMotion ? false : { opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: reduceMotion ? 0 : 0.9, ease }}
+        transition={{ duration: reduceMotion ? 0 : 1, ease }}
       >
-        <p className="mb-4 text-[11px] uppercase tracking-[0.32em] text-accent">
+        <p className="mb-5 text-[11px] uppercase tracking-[0.32em] text-accent">
           Testimonials
         </p>
         <h2
@@ -85,7 +85,7 @@ export function CustomerReviews() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{
-              duration: reduceMotion ? 0 : 0.8,
+              duration: reduceMotion ? 0 : 0.85,
               delay: reduceMotion ? 0 : index * 0.1,
               ease,
             }}

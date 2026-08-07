@@ -22,6 +22,17 @@ export const storefrontCollections = [
     imageAlt: "Handcrafted brass bathroom faucet on marble",
   },
   {
+    id: "shower",
+    title: "Shower Systems",
+    eyebrow: "Bath Ritual",
+    description:
+      "Thermostatic and rain systems in solid brass—composed for spa baths of quiet luxury.",
+    href: "/shop?q=shower",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1800&q=90",
+    imageAlt: "Luxury brass shower system",
+  },
+  {
     id: "accessories",
     title: "Accessories",
     eyebrow: "The Details",
@@ -31,17 +42,6 @@ export const storefrontCollections = [
     image:
       "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1800&q=90",
     imageAlt: "Brass bathroom accessories in a luxury interior",
-  },
-  {
-    id: "new",
-    title: "New Collection",
-    eyebrow: "Just Arrived",
-    description:
-      "The latest silhouettes from the atelier—fresh proportions in living brass.",
-    href: "/shop",
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1800&q=90",
-    imageAlt: "New VARENO brass fixtures in a refined home",
   },
 ] as const;
 

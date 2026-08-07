@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   publisher: siteConfig.legalName,
   icons: {
-    icon: [{ url: "/brand/monogram.svg", type: "image/svg+xml" }],
-    apple: [{ url: "/brand/monogram.svg", type: "image/svg+xml" }],
+    icon: [{ url: "/brand/monogram.svg?v=6", type: "image/svg+xml" }],
+    apple: [{ url: "/brand/monogram.svg?v=6", type: "image/svg+xml" }],
   },
   alternates: {
     canonical: "/",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [
       {
-        url: absoluteUrl("/og/default.svg"),
+        url: absoluteUrl("/og/default.svg?v=6"),
         width: 1200,
         height: 630,
         alt: siteConfig.name,
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     creator: siteConfig.seo.twitterHandle,
     site: siteConfig.seo.twitterHandle,
-    images: [absoluteUrl("/og/default.svg")],
+    images: [absoluteUrl("/og/default.svg?v=6")],
   },
   robots: {
     index: true,

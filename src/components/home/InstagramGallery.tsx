@@ -18,7 +18,7 @@ export function InstagramGallery() {
       id="instagram"
       tone="default"
       aria-labelledby="instagram-heading"
-      containerClassName="flex flex-col gap-12 md:gap-16"
+      containerClassName="flex flex-col gap-16 md:gap-20"
     >
       <motion.header
         className="mx-auto max-w-2xl text-center"

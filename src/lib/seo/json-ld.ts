@@ -8,7 +8,7 @@ export function organizationJsonLd() {
     name: siteConfig.name,
     legalName: siteConfig.legalName,
     url: siteConfig.url,
-    logo: absoluteUrl("/brand/monogram.svg"),
+    logo: absoluteUrl("/brand/monogram.svg?v=6"),
     brand: {
       "@type": "Brand",
       name: siteConfig.name,
